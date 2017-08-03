@@ -19,6 +19,7 @@ let cardIds = []
 
 // Append Divs operation below //
 gameBoard = document.querySelector('.game_board');
+
 //for on shuffledDeck array here//
 for (i=0; i<cardsDeck.length; i++){
   let card = document.createElement('div');
@@ -26,12 +27,23 @@ for (i=0; i<cardsDeck.length; i++){
   card.setAttribute('id', i)
   card.appendChild(document.createTextNode(cardsDeck[i]));
   gameBoard.appendChild(card);
-//  card.setAttribute('onclick', "card.classList.toggle('flipped')");
   let cardNumber = document.getElementById(i);
-// TODO: here is where the trouble begins.  Flip single cards.
-  card.addEventListener('mouseover', alert("mouseover detected at " + i));
   console.log(cardNumber);
   cardIds.push(card);
 }
 
 console.log(cardIds);
+
+
+// TODO: build flip function here *** DONE ***//
+function flipCard(e){
+  if (e.target !== e.currentTarget) {
+    let clickedCard = e.target.id;
+    cardIds[e.target.id].classList.toggle('flipped');
+    console.log("click detected at " + e.target.id);
+  }
+  e.stopPropagation();
+}
+gameBoard.addEventListener('click',flipCard,false);
+
+// TODO: build logic to compare flipped cards //
