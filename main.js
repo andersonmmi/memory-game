@@ -13,22 +13,25 @@ function shuffle(thisArray){
 }
 // Woohoo it works!!!! //
 // Shuffle function has been created //
-shuffledDeck = shuffle(cardsDeck);
+shuffle(cardsDeck);
 //console.log(shuffledDeck);
 let cardIds = []
 
 // Append Divs operation below //
 gameBoard = document.querySelector('.game_board');
-console.log(gameBoard);
-//for on cardsDeck array here//
+//for on shuffledDeck array here//
 for (i=0; i<cardsDeck.length; i++){
-  card = document.createElement('div');
-  console.log(card);
-  card.setAttribute('class','card ' + i);
-  card.innerHTML = `<p>${cardsDeck[i]}<p>`;
+  let card = document.createElement('div');
+  card.setAttribute('class','card');
+  card.setAttribute('id', i)
+  card.appendChild(document.createTextNode(cardsDeck[i]));
   gameBoard.appendChild(card);
-  card.setAttribute('onclick', "card.classList.toggle('flipped')");
-  cardIds.push(i);
+//  card.setAttribute('onclick', "card.classList.toggle('flipped')");
+  let cardNumber = document.getElementById(i);
+// TODO: here is where the trouble begins.  Flip single cards.
+  card.addEventListener('mouseover', alert("mouseover detected at " + i));
+  console.log(cardNumber);
+  cardIds.push(card);
 }
 
 console.log(cardIds);
