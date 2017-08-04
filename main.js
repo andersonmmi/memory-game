@@ -50,7 +50,7 @@ function flipCard(e){
     targetCard = (e.target.innerHTML);
     matchCards.push(e.target);
       if (matchCards.length === 2){
-        compareCards();
+        setTimeout(compareCards(),3000);
       }
   }
   e.stopPropagation();
@@ -60,14 +60,19 @@ gameBoard.addEventListener('click',flipCard,false);
 // TODO: build logic to compare flipped cards //
 
 function compareCards(){
+  //call setTimeout function here??? nope, put it before the compareCards call in the flipCard event
   if(matchCards[0].innerHTML === matchCards[1].innerHTML){
     alert("match detected!");
   } else {
     //flip cards back
-    matchCards[0,1].classList.toggle('flipped');
+
+    matchCards[0].classList.toggle('flipped');
+    matchCards[1].classList.toggle('flipped');
+    console.log(matchCards);
     //empty matchCards array
     matchCards.pop();
     matchCards.pop();
+    console.log(matchCards);
   }
 
 
