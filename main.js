@@ -23,27 +23,41 @@ gameBoard = document.querySelector('.game_board');
 //for on shuffledDeck array here//
 for (i=0; i<cardsDeck.length; i++){
   let card = document.createElement('div');
-  card.setAttribute('class','card');
+  card.setAttribute('class','card flipped');
   card.setAttribute('id', i)
   card.appendChild(document.createTextNode(cardsDeck[i]));
   gameBoard.appendChild(card);
   let cardNumber = document.getElementById(i);
-  console.log(cardNumber);
+  //console.log(cardNumber);
   cardIds.push(card);
 }
 
-console.log(cardIds);
+//console.log(cardIds);
 
+// declare targetCard variable in order to save the input from flipCard()
+// but is it necesary?
+let targetCard = '';
+// declare matchCards array
+let matchCards = [];
 
 // TODO: build flip function here *** DONE ***//
+
 function flipCard(e){
   if (e.target !== e.currentTarget) {
     let clickedCard = e.target.id;
     cardIds[e.target.id].classList.toggle('flipped');
-    console.log("click detected at " + e.target.id);
+    //console.log("click detected at " + e.target.id);
+    targetCard = (e.target.innerHTML);
+    matchCards.push(e.target.innerHTML);
   }
   e.stopPropagation();
 }
 gameBoard.addEventListener('click',flipCard,false);
 
 // TODO: build logic to compare flipped cards //
+
+function compareCards(){
+  push targetCard
+
+
+}
