@@ -48,7 +48,10 @@ function flipCard(e){
     cardIds[e.target.id].classList.toggle('flipped');
     //console.log("click detected at " + e.target.id);
     targetCard = (e.target.innerHTML);
-    matchCards.push(e.target.innerHTML);
+    matchCards.push(e.target);
+      if (matchCards.length === 2){
+        compareCards();
+      }
   }
   e.stopPropagation();
 }
@@ -57,7 +60,15 @@ gameBoard.addEventListener('click',flipCard,false);
 // TODO: build logic to compare flipped cards //
 
 function compareCards(){
-  push targetCard
+  if(matchCards[0].innerHTML === matchCards[1].innerHTML){
+    alert("match detected!");
+  } else {
+    //flip cards back
+    matchCards[0,1].classList.toggle('flipped');
+    //empty matchCards array
+    matchCards.pop();
+    matchCards.pop();
+  }
 
 
 }
