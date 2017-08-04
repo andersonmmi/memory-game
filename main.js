@@ -49,20 +49,22 @@ function flipCard(e){
     //console.log("click detected at " + e.target.id);
     targetCard = (e.target.innerHTML);
     matchCards.push(e.target);
-      if (matchCards.length === 2){
-        setTimeout(compareCards(),3000);
-      }
+    if (matchCards.length === 2){
+      setTimeout(compareCards,500);
+    }
   }
   e.stopPropagation();
 }
 gameBoard.addEventListener('click',flipCard,false);
 
-// TODO: build logic to compare flipped cards //
+// TODO: build logic to compare flipped cards *** DONE *** //
 
 function compareCards(){
   //call setTimeout function here??? nope, put it before the compareCards call in the flipCard event
   if(matchCards[0].innerHTML === matchCards[1].innerHTML){
-    alert("match detected!");
+    //alert("match detected!");
+    matchCards.pop();
+    matchCards.pop();
   } else {
     //flip cards back
 
