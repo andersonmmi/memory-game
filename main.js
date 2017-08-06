@@ -4,6 +4,7 @@ let cardsDeck = cardsTypes.concat.apply(cardsTypes,cardsTypes);
 console.log(cardsDeck);
 let score = 0;
 let cardsMatched = 0;
+let scoreBoard = document.querySelector('.score_board');
 
 // Here I shall teach main.js to shuffle cards //
 function shuffle(thisArray){
@@ -66,13 +67,15 @@ function compareCards(){
   if(matchCards[0].innerHTML === matchCards[1].innerHTML){
     //alert("match detected!");
     score += 200;
-    //TODO: change score display here
+    //TODO: change score display here *** DONE ***
 
     cardsMatched +=2;
     matchCards.pop();
     matchCards.pop();
-    console.log(cardsMatched + " === " + cardsDeck.length);
-    console.log("Your score is " + score);
+    // console.log(cardsMatched + " === " + cardsDeck.length);
+    // console.log("Your score is " + score);
+    scoreBoard.innerHTML = 'Score: ' + score;
+
     if (cardsMatched === cardsDeck.length){
       alert ("Congratulations, you cleared the board!");
     }
