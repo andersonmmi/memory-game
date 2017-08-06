@@ -10,10 +10,15 @@
   margin-top: 3vh;
   text-align: center;
 }
+.timer{
+  float:left;
+  width: 200px;
+  text-align: center;
+  margin-top: 3vh;
+}
 .score_board{
   width: 200px;
   float: left;
-  margin-top: 6vh;
   text-align: center;
 }
 .game_board {
