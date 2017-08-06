@@ -1,14 +1,20 @@
 .wrapper {
   background-color: aquamarine;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
   width: 500px;
-  margin: 10% auto;
+  margin: auto;
 }
 .title {
   color: navy;
-  width: 460px
+  width: 300px;
+  float:left;
+  margin-top: 3vh;
+  text-align: center;
+}
+.score_board{
+  width: 200px;
+  float: left;
+  margin-top: 6vh;
+  text-align: center;
 }
 .game_board {
   background-color: goldenrod;
@@ -19,6 +25,7 @@
   width: 460px;
   justify-content:space-around;
   align-content: space-around;
+  margin: auto;
 }
 .card {
   background-color: lavender;

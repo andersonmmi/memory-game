@@ -66,12 +66,13 @@ function compareCards(){
   if(matchCards[0].innerHTML === matchCards[1].innerHTML){
     //alert("match detected!");
     score += 200;
-    //change score display here
+    //TODO: change score display here
 
     cardsMatched +=2;
     matchCards.pop();
     matchCards.pop();
     console.log(cardsMatched + " === " + cardsDeck.length);
+    console.log("Your score is " + score);
     if (cardsMatched === cardsDeck.length){
       alert ("Congratulations, you cleared the board!");
     }
