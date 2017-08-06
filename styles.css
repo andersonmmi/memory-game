@@ -53,3 +53,8 @@
 /*.flipped:hover{
   background-color: red;
 }*/
+footer{
+  font-size: 1vw;
+  text-align: center;
+  padding: 1vh;
+}
