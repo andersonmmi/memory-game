@@ -27,10 +27,12 @@ gameBoard = document.querySelector('.game_board');
 
 //for on shuffledDeck array here//
 for (i=0; i<cardsDeck.length; i++){
-  let card = document.createElement('div');
+  let card = document.createElement('img');
   card.setAttribute('class','card flipped');
   card.setAttribute('id', i)
-  card.appendChild(document.createTextNode(cardsDeck[i]));
+  card.setAttribute('src',`icons/${cardsDeck[i]}.svg`);
+  // card.appendChild(document.createTextNode(cardsDeck[i]));
+  // above: convert div to img, attempt successfull
   gameBoard.appendChild(card);
   let cardNumber = document.getElementById(i);
   //console.log(cardNumber);
@@ -61,12 +63,13 @@ let matchCards = [];
 
 function flipCard(e){
   if (e.target !== e.currentTarget) {
-    let clickedCard = e.target.id;
+    //let clickedCard = e.target.id;
     console.log(e.target.classList.value);
+    console.log(e.target.src)
     if (e.target.classList.value === "card flipped"){
       cardIds[e.target.id].classList.toggle('flipped');
       //console.log("click detected at " + e.target.id);
-      targetCard = (e.target.innerHTML);
+      targetCard = (e.target.src);
       matchCards.push(e.target);
       if (matchCards.length === 2){
         setTimeout(compareCards,500);
@@ -81,7 +84,7 @@ gameBoard.addEventListener('click',flipCard,false);
 
 function compareCards(){
   //call setTimeout function here??? nope, put it before the compareCards call in the flipCard event
-  if(matchCards[0].innerHTML === matchCards[1].innerHTML){
+  if(matchCards[0].src === matchCards[1].src){
     //alert("match detected!");
     score += 200 - seconds;
     //TODO: change score display here *** DONE ***
@@ -94,7 +97,7 @@ function compareCards(){
     scoreBoard.innerHTML = `Score: ${score}`;
 
     if (cardsMatched === cardsDeck.length){
-      alert ("Congratulations, you cleared the board!");
+      alert ("Congratulations, you cleared the board!\nReload the page to play again :-)");
     }
   } else {
     //flip cards back

@@ -31,6 +31,7 @@
   justify-content:space-around;
   align-content: space-around;
   margin: auto;
+  border-radius: 5px 15px;
 }
 .card {
   background-color: lavender;
@@ -43,7 +44,12 @@
   align-content: center;
   align-self: center;
   align-items: center;
+  border-radius: 5px 15px;
 }
 .flipped{
   color: lavender;
+  content: url('icons/t.svg');
 }
+/*.flipped:hover{
+  background-color: red;
+}*/
