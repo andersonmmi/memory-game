@@ -5,6 +5,8 @@ console.log(cardsDeck);
 let score = 0;
 let cardsMatched = 0;
 let scoreBoard = document.querySelector('.score_board');
+let timer = document.querySelector('.timer');
+let seconds = 0;
 
 // Here I shall teach main.js to shuffle cards //
 function shuffle(thisArray){
@@ -35,6 +37,17 @@ for (i=0; i<cardsDeck.length; i++){
   cardIds.push(card);
 }
 
+// TODO: create timer
+// let time = setTimeout(plusOneSecond,1000);
+
+function plusOneSecond(){
+  if(cardsMatched !== cardsDeck.length)
+    seconds++;
+    timer.innerHTML = seconds;
+    setTimeout(plusOneSecond,1000);
+}
+
+plusOneSecond();
 //console.log(cardIds);
 
 // declare targetCard variable in order to save the input from flipCard()
