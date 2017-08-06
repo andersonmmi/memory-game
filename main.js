@@ -43,7 +43,7 @@ for (i=0; i<cardsDeck.length; i++){
 function plusOneSecond(){
   if(cardsMatched !== cardsDeck.length)
     seconds++;
-    timer.innerHTML = seconds;
+    timer.innerHTML = `Time: ${seconds}`;
     setTimeout(plusOneSecond,1000);
 }
 
@@ -57,16 +57,20 @@ let targetCard = '';
 let matchCards = [];
 
 // TODO: build flip function here *** DONE ***//
+// BUG: ***Squashed*** if a revield card is clicked it can count toward a win
 
 function flipCard(e){
   if (e.target !== e.currentTarget) {
     let clickedCard = e.target.id;
-    cardIds[e.target.id].classList.toggle('flipped');
-    //console.log("click detected at " + e.target.id);
-    targetCard = (e.target.innerHTML);
-    matchCards.push(e.target);
-    if (matchCards.length === 2){
-      setTimeout(compareCards,500);
+    console.log(e.target.classList.value);
+    if (e.target.classList.value === "card flipped"){
+      cardIds[e.target.id].classList.toggle('flipped');
+      //console.log("click detected at " + e.target.id);
+      targetCard = (e.target.innerHTML);
+      matchCards.push(e.target);
+      if (matchCards.length === 2){
+        setTimeout(compareCards,500);
+      }
     }
   }
   e.stopPropagation();
@@ -79,7 +83,7 @@ function compareCards(){
   //call setTimeout function here??? nope, put it before the compareCards call in the flipCard event
   if(matchCards[0].innerHTML === matchCards[1].innerHTML){
     //alert("match detected!");
-    score += 200;
+    score += 200 - seconds;
     //TODO: change score display here *** DONE ***
 
     cardsMatched +=2;
@@ -87,7 +91,7 @@ function compareCards(){
     matchCards.pop();
     // console.log(cardsMatched + " === " + cardsDeck.length);
     // console.log("Your score is " + score);
-    scoreBoard.innerHTML = 'Score: ' + score;
+    scoreBoard.innerHTML = `Score: ${score}`;
 
     if (cardsMatched === cardsDeck.length){
       alert ("Congratulations, you cleared the board!");
